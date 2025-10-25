@@ -1,0 +1,11 @@
+<!-- app/views/notes/index.html.erb -->
+<h1>Notes</h1>
+<p><%= link_to "New Note", new_note_path %></p>
+<ul>
+  <% @notes.each do |note| %>
+    <li>
+      <%= link_to note.title.presence || "(no title)", note %>
+      — <%= l(note.created_at, format: :short) rescue note.created_at %>
+    </li>
+  <% end %>
+</ul>

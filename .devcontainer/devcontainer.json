@@ -1,17 +1,29 @@
 {
   "name": "Runote Dev",
-  "build": { "dockerfile": "Dockerfile.dev" },
-  "forwardPorts": [3000],
+  "build": {
+    "dockerfile": "Dockerfile.dev"
+  },
+  "forwardPorts": [
+    3000
+  ],
   "postCreateCommand": "bundle install",
   "customizations": {
     "vscode": {
-      "settings": { 
+      "settings": {
         "rubyLsp.enabled": true,
         "rubyLsp.rubocop.enabled": true,
+        "rubyLsp.rubocop.useBundler": true,
         "editor.formatOnSave": true,
-        "[ruby]": { "editor.defaultFormatter": "Shopify.ruby-lsp" }
+        "editor.codeActionsOnSave": {
+          "source.fixAll.rubocop": "explicit"
+        },
+        "[ruby]": {
+          "editor.defaultFormatter": "Shopify.ruby-lsp"
+        }
       },
-      "extensions": ["Shopify.ruby-lsp"]
+      "extensions": [
+        "Shopify.ruby-lsp"
+      ]
     }
   }
 }

@@ -1,0 +1,25 @@
+<%= form_with model: @note, data: { controller: "preview" } do |f| %>
+  <div style="display: flex; gap: 1rem;">
+    <div style="flex: 1;">
+      <p>
+        <%= f.label :title %><br>
+        <%= f.text_field :title, placeholder: "Title", required: true %>
+      </p>
+
+      <p><%= f.label :content %></p>
+      <%= f.text_area :content,
+            rows: 15,
+            data: { preview_target: "input", action: "input->preview#update" } %>
+    </div>
+
+    <div style="flex: 1;">
+      <p>Preview</p>
+      <div data-preview-target="output"
+           class="markdown-body"
+           style="border: 1px solid #ccc; padding: 1rem; min-height: 15em;">
+      </div>
+    </div>
+  </div>
+
+  <p><%= f.submit %></p>
+<% end %>

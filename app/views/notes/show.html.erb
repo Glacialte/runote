@@ -1,0 +1,12 @@
+<!-- app/views/notes/show.html.erb -->
+<h1><%= @note.title.presence || "(no title)" %></h1>
+
+<div class="markdown-body">
+  <%= markdown(@note.content) %>
+</div>
+
+<p>
+  <%= link_to "Edit", edit_note_path(@note) %> |
+  <%= link_to "All Notes", notes_path %> |
+  <%= link_to "Delete", @note, data: { turbo_method: :delete, turbo_confirm: "Delete this note?" } %>
+</p>

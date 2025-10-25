@@ -1,0 +1,8 @@
+<!-- app/views/notes/edit.html.erb -->
+<h1>Edit Note</h1>
+<%= render "form", note: @note %>
+<p>
+  <%= link_to "Back", @note %>
+  |
+  <%= link_to "Delete", @note, data: { turbo_method: :delete, turbo_confirm: "Delete this note?" } %>
+</p>
