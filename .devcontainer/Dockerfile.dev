@@ -1,0 +1,12 @@
+FROM ruby:3.4.7-bookworm
+WORKDIR /workspace
+RUN apt-get update -qq && apt-get install -y --no-install-recommends nodejs sqlite3 libvips && rm -rf /var/lib/apt/lists/*
+
+# for rich plompt
+RUN curl -fsSL https://starship.rs/install.sh | sh -s -- -y && echo 'eval "$(starship init bash)"' >> ~/.bashrc
+
+# for coloring
+RUN echo 'eval "$(dircolors -b)"' >> ~/.bashrc && \
+    echo "alias ls='ls --color=auto'" >> ~/.bashrc && \
+    echo "alias ll='ls -alF --color=auto'" >> ~/.bashrc && \
+    echo "alias la='ls -A --color=auto'" >> ~/.bashrc
